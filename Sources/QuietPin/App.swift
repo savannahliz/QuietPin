@@ -79,7 +79,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
             DispatchQueue.main.async {
                 guard let self else { return }
                 let alert = NSAlert()
-                alert.messageText = "QuietPin 未能保存记录"
+                alert.messageText = "Aside 未能保存记录"
                 alert.informativeText = message
                 alert.alertStyle = .warning
                 alert.runModal()
@@ -123,7 +123,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         let defaultFrame = NSRect(x: screen.maxX - 390, y: screen.maxY - 530, width: 350, height: 460)
         mainPanel = makePanel(rect: defaultFrame)
         mainPanel.animationBehavior = .none
-        mainPanel.title = "QuietPin Inbox"
+        mainPanel.title = "Aside Inbox"
         configureSizeLimits()
         mainPanel.delegate = self
         mainPanel.contentView = NSHostingView(rootView: InboxView(store: store,
@@ -140,7 +140,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         }
         edgePanel = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 8, height: 100),
             styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
-        edgePanel.title = "QuietPin 边缘唤回条"
+        edgePanel.title = "Aside 边缘唤回条"
         edgePanel.isOpaque = false
         edgePanel.hasShadow = false
         edgePanel.hidesOnDeactivate = false
@@ -148,7 +148,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         edgePanel.animationBehavior = .none
         edgePanel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         capturePanel = makePanel(rect: NSRect(x: 0, y: 0, width: 660, height: 64))
-        capturePanel.title = "QuietPin 快速输入"
+        capturePanel.title = "Aside 快速输入"
         capturePanel.styleMask.remove(.resizable)
         capturePanel.participatesAsMainWindow = false
         capturePanel.animationBehavior = .none
@@ -169,7 +169,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
             ("最小化到菜单栏", #selector(hideInbox), ""),
             ("窗口置顶", #selector(toggleAlwaysOnTop), ""),
             ("设置…", #selector(showSettings), ","),
-            ("退出 QuietPin", #selector(quit), "q")
+            ("退出 Aside", #selector(quit), "q")
         ]
         for (title, selector, key) in entries {
             let item = NSMenuItem(title: title, action: selector, keyEquivalent: key)
@@ -178,9 +178,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         }
         menu.delegate = self
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem.button?.image = NSImage(systemSymbolName: "pin.circle", accessibilityDescription: "QuietPin")
-        statusItem.button?.toolTip = "QuietPin · 想到就记"
-        statusItem.button?.title = " QuietPin"
+        statusItem.button?.image = NSImage(systemSymbolName: "pin.circle", accessibilityDescription: "Aside")
+        statusItem.button?.toolTip = "Aside · Capture it. Stay in flow."
+        statusItem.button?.title = " Aside"
         statusItem.menu = menu
         let appMenu = NSMenu()
         let root = NSMenuItem()
@@ -372,7 +372,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         if settingsWindow == nil {
             let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 450, height: 720),
                 styleMask: [.titled, .closable], backing: .buffered, defer: false)
-            window.title = "QuietPin 设置"
+            window.title = "Aside 设置"
             window.isReleasedWhenClosed = false
             window.contentView = NSHostingView(rootView: SettingsView(store: store))
             window.level = .floating
@@ -629,7 +629,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, NSMe
         closeCapture()
         showSettings()
         let passed = added && collapsed && strip && edgeHidden && edgeRestored && captureVisible && mainPanel.level == .floating && store.shortcutError == nil
-        print("QuietPin smoke: \(passed ? "PASS" : "FAIL") — save=\(added), pins=\(collapsed), strip=\(strip), edgeHide=\(edgeHidden), edgeRestore=\(edgeRestored), capture=\(captureVisible), hotkey=\(store.shortcutError == nil)")
+        print("Aside smoke: \(passed ? "PASS" : "FAIL") — save=\(added), pins=\(collapsed), strip=\(strip), edgeHide=\(edgeHidden), edgeRestore=\(edgeRestored), capture=\(captureVisible), hotkey=\(store.shortcutError == nil)")
         fflush(stdout)
         NSApp.terminate(nil)
     }

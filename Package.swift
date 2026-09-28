@@ -2,9 +2,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "QuietPin",
+    name: "Aside",
     platforms: [.macOS(.v13)],
-    products: [.executable(name: "QuietPin", targets: ["QuietPin"])],
+    products: [.executable(name: "Aside", targets: ["QuietPin"])],
     targets: [
         .target(name: "QuietPinCore"),
         .executableTarget(name: "QuietPin", dependencies: ["QuietPinCore"])

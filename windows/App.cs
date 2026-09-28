@@ -57,7 +57,7 @@ public sealed class App : Application
     {
         base.OnStartup(e);
         mutex = new Mutex(true, "Local\\QuietPin.Desktop", out var first);
-        if (!first) { MessageBox.Show("QuietPin 已在运行，请点击系统托盘中的图标。", "QuietPin"); Shutdown(); return; }
+        if (!first) { MessageBox.Show("Aside 已在运行，请点击系统托盘中的图标。", "Aside"); Shutdown(); return; }
         Store = new Store(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "QuietPin"));
         Inbox = new MainWindow(this);
         MainWindow = Inbox;
@@ -67,7 +67,7 @@ public sealed class App : Application
             RegisterShortcut();
         };
         Inbox.Show();
-        tray = new Forms.NotifyIcon { Text = "QuietPin · 想到就记", Icon = System.Drawing.SystemIcons.Information, Visible = true };
+        tray = new Forms.NotifyIcon { Text = "Aside · Capture it. Stay in flow.", Icon = System.Drawing.SystemIcons.Information, Visible = true };
         var menu = new Forms.ContextMenuStrip();
         menu.Items.Add("显示 Inbox", null, (_, _) => Dispatcher.Invoke(ShowInbox));
         menu.Items.Add("快速记录", null, (_, _) => Dispatcher.Invoke(ToggleCapture));
@@ -84,16 +84,16 @@ public sealed class App : Application
             ((Forms.ToolStripMenuItem)stripMenu).Checked = Store.Book.Preferences.StripMode;
         };
         menu.Items.Add("设置", null, (_, _) => Dispatcher.Invoke(ShowSettings));
-        menu.Items.Add("退出 QuietPin", null, (_, _) => Dispatcher.Invoke(() => { Quitting = true; Shutdown(); }));
+        menu.Items.Add("退出 Aside", null, (_, _) => Dispatcher.Invoke(() => { Quitting = true; Shutdown(); }));
         tray.ContextMenuStrip = menu;
         tray.DoubleClick += (_, _) => Dispatcher.Invoke(ShowInbox);
-        if (Store.LoadError != null) MessageBox.Show(Store.LoadError, "QuietPin 记录载入失败");
+        if (Store.LoadError != null) MessageBox.Show(Store.LoadError, "Aside 记录载入失败");
     }
 
     internal bool Commit(Action<Notebook> action, bool render = true)
     {
         try { Store.Edit(action); if (render) { Inbox.Render(); capture?.ApplyAppearance(); settings?.UpdatePreviews(); } return true; }
-        catch (Exception ex) { MessageBox.Show("未能保存，原记录未被覆盖。\n" + ex.Message, "QuietPin"); return false; }
+        catch (Exception ex) { MessageBox.Show("未能保存，原记录未被覆盖。\n" + ex.Message, "Aside"); return false; }
     }
     internal void ShowInbox() { Inbox.Expand(); Inbox.Show(); Inbox.Activate(); }
     internal void ShowSettings()
@@ -131,7 +131,7 @@ public sealed class App : Application
         var index = Math.Clamp(Store.Book.Preferences.Shortcut, 0, 2);
         var p = Store.Book.Preferences;
         ShortcutError = Native.RegisterHotKey(hwnd, 1, (p.CustomModifiers ?? modifiers[index]) | 0x4000, p.CustomKey ?? 0x20) ? null : "快捷键已被占用，请在设置中更换。";
-        if (ShortcutError != null) MessageBox.Show(ShortcutError, "QuietPin");
+        if (ShortcutError != null) MessageBox.Show(ShortcutError, "Aside");
     }
     private IntPtr WindowMessage(IntPtr hwnd, int message, IntPtr wParam, IntPtr lParam, ref bool handled)
     {
@@ -218,7 +218,7 @@ internal sealed class MainWindow : Window
     private readonly DispatcherTimer edgeTimer = new() { Interval = TimeSpan.FromMilliseconds(100) };
     private readonly Window edgeHandle = new()
     {
-        Title = "QuietPin 边缘唤回条", Width = 8, Height = 100,
+        Title = "Aside 边缘唤回条", Width = 8, Height = 100,
         WindowStyle = WindowStyle.None, ResizeMode = ResizeMode.NoResize,
         AllowsTransparency = true, ShowInTaskbar = false, ShowActivated = false, Focusable = false
     };
@@ -231,7 +231,7 @@ internal sealed class MainWindow : Window
     internal MainWindow(App app)
     {
         this.app = app;
-        Title = "QuietPin Inbox"; FontFamily = new FontFamily("Microsoft YaHei UI");
+        Title = "Aside Inbox"; FontFamily = new FontFamily("Microsoft YaHei UI");
         WindowStyle = WindowStyle.None; AllowsTransparency = true; Background = Brushes.Transparent;
         ResizeMode = ResizeMode.CanResizeWithGrip; ShowInTaskbar = false; MinWidth = 290;
         var p = app.Store.Book.Preferences;
@@ -588,7 +588,7 @@ internal sealed class CaptureWindow : Window
     internal CaptureWindow(App app)
     {
         this.app = app;
-        Title = "QuietPin 快速记录"; Width = 660; Height = 64; ResizeMode = ResizeMode.NoResize;
+        Title = "Aside 快速记录"; Width = 660; Height = 64; ResizeMode = ResizeMode.NoResize;
         WindowStyle = WindowStyle.None; AllowsTransparency = true; Background = Brushes.Transparent; Topmost = true; ShowInTaskbar = false;
         FontFamily = new FontFamily("Microsoft YaHei UI");
         var panel = new DockPanel();
@@ -719,7 +719,7 @@ internal sealed class SettingsWindow : Window
     internal SettingsWindow(App app)
     {
         this.app = app;
-        Title = "QuietPin 设置"; Width = 450; Height = 720; Topmost = true; ResizeMode = ResizeMode.NoResize;
+        Title = "Aside 设置"; Width = 450; Height = 720; Topmost = true; ResizeMode = ResizeMode.NoResize;
         ShowInTaskbar = false; WindowStartupLocation = WindowStartupLocation.CenterScreen;
         FontFamily = new FontFamily("Microsoft YaHei UI"); Background = Brushes.WhiteSmoke;
         Content = new ScrollViewer { Content = stack, VerticalScrollBarVisibility = ScrollBarVisibility.Auto };
@@ -731,7 +731,7 @@ internal sealed class SettingsWindow : Window
         stack.Children.Add(UI.Text("通用", 18));
         Toggle("窗口始终置顶", p.Topmost, value => app.Commit(b => b.Preferences.Topmost = value));
         using (var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run"))
-            Toggle("登录时启动 QuietPin", key?.GetValue("QuietPin") != null, SetLogin);
+            Toggle("登录时启动 Aside", key?.GetValue("QuietPin") != null, SetLogin);
         stack.Children.Add(UI.Text("全局快捷键"));
         var shortcut = new Button { Content = p.CustomKeyLabel ?? App.ShortcutLabels[Math.Clamp(p.Shortcut, 0, 2)], Margin = new Thickness(3), Padding = new Thickness(9, 6, 9, 6) };
         var recording = false;
@@ -788,7 +788,7 @@ internal sealed class SettingsWindow : Window
         stack.Children.Add(UI.Button("应用颜色值", () =>
         {
             try { var color = (Color)ColorConverter.ConvertFromString(hex.Text); app.Commit(b => b.Preferences.Background = color.ToString()); }
-            catch { MessageBox.Show("请输入有效的颜色值，例如 #FFE8E6DB。", "QuietPin"); }
+            catch { MessageBox.Show("请输入有效的颜色值，例如 #FFE8E6DB。", "Aside"); }
         }));
         var palette = new DockPanel { Margin = new Thickness(0, 8, 0, 8) };
         var saveColor = UI.Button("保存颜色", () => app.Commit(b =>
@@ -830,10 +830,10 @@ internal sealed class SettingsWindow : Window
         support.Margin = new Thickness(0, 5, 0, 0);
         githubContent.Children.Add(support);
         github.Click += (_, _) => {
-            try { Process.Start(new ProcessStartInfo("https://github.com/savannahliz/SavannahZ_QuietPin") { UseShellExecute = true }); }
-            catch (Exception ex) { MessageBox.Show("无法打开 GitHub：" + ex.Message, "QuietPin"); }
+            try { Process.Start(new ProcessStartInfo("https://github.com/savannahliz/aside") { UseShellExecute = true }); }
+            catch (Exception ex) { MessageBox.Show("无法打开 GitHub：" + ex.Message, "Aside"); }
         };
-        System.Windows.Automation.AutomationProperties.SetName(github, "打开 QuietPin 的 GitHub 仓库");
+        System.Windows.Automation.AutomationProperties.SetName(github, "打开 Aside 的 GitHub 仓库");
         stack.Children.Add(github);
     }
     private void Toggle(string title, bool value, Action<bool> change)
@@ -904,7 +904,7 @@ internal sealed class SettingsWindow : Window
             if (enabled) key.SetValue("QuietPin", "\"" + Environment.ProcessPath + "\"");
             else key.DeleteValue("QuietPin", false);
         }
-        catch (Exception ex) { MessageBox.Show("无法更改登录启动：" + ex.Message, "QuietPin"); Render(); }
+        catch (Exception ex) { MessageBox.Show("无法更改登录启动：" + ex.Message, "Aside"); Render(); }
     }
     private void StartPicker()
     {

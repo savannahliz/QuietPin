@@ -56,14 +56,14 @@ struct PaletteButton: NSViewRepresentable {
         init(store: Store) { self.store = store }
         @objc func open() {
             let panel = NSColorPanel.shared
-            panel.title = "背景颜色 · QuietPin"
+            panel.title = "背景颜色 · Aside"
             panel.showsAlpha = true
             panel.isContinuous = true
             panel.color = store.preferences.background.nsColor
             panel.setTarget(self)
             panel.setAction(#selector(changed(_:)))
             let accessory = NSHostingView(rootView: VStack(alignment: .leading, spacing: 8) {
-                Text("QuietPin 收藏色").font(.headline)
+                Text("Aside 收藏色").font(.headline)
                 SavedColorShelf(store: store)
             }.padding(12))
             accessory.frame = NSRect(x: 0, y: 0, width: 330, height: 140)

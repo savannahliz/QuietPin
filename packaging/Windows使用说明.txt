@@ -1,7 +1,7 @@
-QuietPin 1.0 — Windows x64
+Aside 1.1 — Windows x64
 
 适用于 Windows 10/11 64 位 Intel / AMD 电脑。
-双击 QuietPin.exe 即可运行，无需终端，无需另装 .NET，无需管理员权限。
+双击 Aside.exe 即可运行，无需终端，无需另装 .NET，无需管理员权限。
 首次启动会将随包运行库解压至系统临时缓存目录，可能需要几秒。
 
 快捷键：Ctrl + Alt + Space。可在设置中录制任意带修饰键的组合。
@@ -17,7 +17,7 @@ QuietPin 1.0 — Windows x64
 关闭主窗口会隐藏至系统托盘，右键托盘图标可以重新打开或退出。
 可在设置中选择颜色、屏幕取色、透明度、始终置顶及登录启动。
 
-数据：%LOCALAPPDATA%\QuietPin\inbox.json
+数据：%LOCALAPPDATA%\QuietPin\inbox.json（为兼容旧版而保留）
 设置也保存在此文件。请不要用 Mac 版 JSON 直接覆盖 Windows 版文件。
 移动 EXE 后，请重新开关「登录时启动」更新文件路径。
 

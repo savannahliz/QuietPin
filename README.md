@@ -1,16 +1,16 @@
-# QuietPin
+# Aside
 
 [简体中文](README.md) · [English](README.en.md)
 
-一个常驻桌面的轻量 Inbox：随时记下一件事，只让最重要的三件事留在眼前。
+Capture it. Stay in flow.
 
-![QuietPin 产品介绍：闪念即存，写完即消失](docs/images/quietpin-cover.png)
+Aside is a lightweight desktop capture tool for thoughts that shouldn't interrupt what you're doing.
 
-并行处理任务时，突然冒出的想法很容易打断当前心流；不记下来，又怕转眼就忘。QuietPin 让你用快捷键唤出中央输入条，写完即收进 Inbox，再回到手头的事。
+并行处理任务时，突然冒出的想法很容易打断当前心流；不记下来，又怕转眼就忘。Aside 让你用快捷键唤出中央输入条，写完即收进 Inbox，再回到手头的事。
 
-QuietPin 提供 macOS 和 Windows 版本。记录保存在本机，不需要账号，也没有云同步或 AI 功能。
+Aside 提供 macOS 和 Windows 版本。记录保存在本机，不需要账号，也没有云同步或 AI 功能。
 
-如果 QuietPin 对你有帮助，欢迎到 [GitHub 项目主页](https://github.com/savannahliz/SavannahZ_QuietPin) 点个 ⭐️ 支持作者。
+如果 Aside 对你有帮助，欢迎到 [GitHub 项目主页](https://github.com/savannahliz/aside) 点个 ⭐️ 支持作者。
 
 ## 它能做什么
 
@@ -23,26 +23,28 @@ QuietPin 提供 macOS 和 Windows 版本。记录保存在本机，不需要账�
 
 ## 下载与使用
 
-安装包发布在仓库的 [Releases 页面](https://github.com/savannahliz/SavannahZ_QuietPin/releases/tag/v1.0.2)，源代码压缩包不能直接当作应用运行。
+安装包发布在仓库的 [Releases 页面](https://github.com/savannahliz/aside/releases/tag/v1.1.0)，源代码压缩包不能直接当作应用运行。
 
 | 平台 | 下载文件 | 默认快速记录快捷键 |
 | --- | --- | --- |
-| macOS 13+，Apple Silicon / Intel | `QuietPin-1.0.2-macOS-universal.dmg` | Option + Space |
-| Windows 10/11 x64 | `QuietPin-1.0.2-Windows-x64.exe` | Ctrl + Alt + Space |
+| macOS 13+，Apple Silicon / Intel | `Aside-1.1.0-macOS-universal.dmg` | Option + Space |
+| Windows 10/11 x64 | `Aside-1.1.0-Windows-x64.exe` | Ctrl + Alt + Space |
 
-Mac：打开 DMG，将 QuietPin 拖进“应用程序”，双击启动。它显示在屏幕顶部菜单栏，不显示在 Dock。Windows：双击 EXE 即可运行，无需另装 .NET；可在系统托盘找到应用。
+Mac：打开 DMG，将 Aside 拖进“应用程序”，双击启动。它显示在屏幕顶部菜单栏，不显示在 Dock。Windows：双击 EXE 即可运行，无需另装 .NET；可在系统托盘找到应用。
+
+从旧版升级：先退出旧应用，再启动 Aside。为了继续读取既有记录和设置，内部仍沿用旧版的数据目录及稳定标识。Mac 上 `Aside.app` 不会自动覆盖 `QuietPin.app`；确认 Aside 中能看到原记录后，可自行移除旧应用，**不要删除下方的数据目录**。如果曾开启登录启动，请在 Aside 设置中关闭再开启一次；Windows 版改为 `Aside.exe`，重新开启登录启动也会更新保存的 EXE 路径。
 
 选择颜色后会立即应用。若想以后再次使用该颜色，在调色窗口或设置中点击“保存颜色”；点击收藏色块可恢复，右键可删除收藏。
 
-### macOS 首次打开提示“QuietPin 无法打开”
+### macOS 首次打开提示“Aside 无法打开”
 
-当前 DMG 尚未使用 Apple Developer ID 签名和公证，macOS 可能显示“Apple 无法验证 QuietPin 是否不含恶意软件”，并提供“移到废纸篓 / 完成”按钮。这并不等于已经检测到恶意软件，也不代表应用已经通过安全检查。请先确认安装包来自本仓库的 Releases；如果无法确认来源，不要继续打开。
+当前 DMG 尚未使用 Apple Developer ID 签名和公证，macOS 可能显示“Apple 无法验证 Aside 是否不含恶意软件”，并提供“移到废纸篓 / 完成”按钮。这并不等于已经检测到恶意软件，也不代表应用已经通过安全检查。请先确认安装包来自本仓库的 Releases；如果无法确认来源，不要继续打开。
 
 确认来源可信后，按 [Apple 官方说明](https://support.apple.com/zh-cn/102445) 操作：
 
 1. 在提示框中点“完成”，不要点“移到废纸篓”。
 2. 打开 Mac 的“系统设置”→“隐私与安全性”，向下滚动到“安全性”。
-3. 找到 QuietPin 的拦截提示，点“仍要打开”（英文系统为 **Open Anyway**）。
+3. 找到 Aside 的拦截提示，点“仍要打开”（英文系统为 **Open Anyway**）。
 4. 再次确认时点“打开”，按系统要求输入密码或使用 Touch ID。之后可正常双击启动。
 
 仅将“允许从以下位置下载的应用”改为“App Store 和已识别的开发者”，**不能替代**上面的“仍要打开”操作，因为当前版本还不是已识别开发者签名并公证的应用。无需关闭 Gatekeeper 或运行终端命令。彻底消除这类首次打开警告，需要未来版本完成 Developer ID 签名与 Apple 公证。
@@ -53,6 +55,8 @@ Windows 安装包目前也未进行正式代码签名，首次运行时可能显
 
 - macOS：`~/Library/Application Support/QuietPin/inbox.json`；设置由系统 UserDefaults 保存。
 - Windows：`%LOCALAPPDATA%\QuietPin\inbox.json`，记录和设置保存在同一文件。
+
+上面两个 `QuietPin` 路径是为兼容旧用户数据而保留的内部路径，不是应用显示名称。
 
 目前没有跨设备同步或 Mac/Windows 数据格式互通。备份前先退出应用，再复制对应数据文件；Mac 的外观和窗口设置还需另外备份系统偏好设置。
 
@@ -67,7 +71,7 @@ bash scripts/test-macos.sh
 bash scripts/build-macos.sh
 ```
 
-构建完成后，应用位于 `dist/QuietPin.app`，DMG 位于 `dist/`。脚本分别编译 Apple Silicon 和 Intel 版本，再合并为通用应用。
+构建完成后，应用位于 `dist/Aside.app`，DMG 位于 `dist/`。脚本分别编译 Apple Silicon 和 Intel 版本，再合并为通用应用。
 
 ### Windows
 
@@ -88,4 +92,4 @@ macOS 的数据模型、颜色收藏、窗口模式、贴边行为和快速输�
 
 ## 许可证
 
-QuietPin 以 [GNU GPL v3.0](LICENSE) 发布（仅第 3 版）。
+Aside 以 [GNU GPL v3.0](LICENSE) 发布（仅第 3 版）。

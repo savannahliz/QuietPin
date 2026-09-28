@@ -459,7 +459,7 @@ struct SettingsView: View {
         Form {
             Section("通用") {
                 Toggle("窗口始终置顶", isOn: $store.preferences.alwaysOnTop)
-                Toggle("登录时启动 QuietPin", isOn: Binding(get: { loginEnabled }, set: setLogin))
+                Toggle("登录时启动 Aside", isOn: Binding(get: { loginEnabled }, set: setLogin))
                 if let loginMessage { Text(loginMessage).font(.caption).foregroundStyle(.secondary) }
                 ShortcutRecorder(store: store)
                 if let error = store.shortcutError {
@@ -496,13 +496,13 @@ struct SettingsView: View {
                 Button("恢复默认外观") { store.resetAppearance() }
             }
             Section {
-                Text("QuietPin · 想到就记，记完就走。")
+                Text("Aside · Capture it. Stay in flow.")
                     .font(.caption).foregroundStyle(.secondary)
                 Text("记录仅保存在这台 Mac 上。拖动置顶事项可调整顺序；右键可完成或删除。")
                     .font(.caption).foregroundStyle(.secondary)
             }
             Section {
-                Link(destination: URL(string: "https://github.com/savannahliz/SavannahZ_QuietPin")!) {
+                Link(destination: URL(string: "https://github.com/savannahliz/aside")!) {
                     VStack(spacing: 5) {
                         if let url = Bundle.main.url(forResource: colorScheme == .dark ? "GitHub_Invertocat_White" : "GitHub_Invertocat_Black", withExtension: "png"),
                            let icon = NSImage(contentsOf: url) {
@@ -518,7 +518,7 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("打开 QuietPin 的 GitHub 仓库")
+                .accessibilityLabel("打开 Aside 的 GitHub 仓库")
             }
         }
         .formStyle(.grouped).padding(8).frame(width: 450, height: 720)
@@ -542,7 +542,7 @@ struct SettingsView: View {
             else { try SMAppService.mainApp.unregister() }
             loginEnabled = SMAppService.mainApp.status == .enabled
             if SMAppService.mainApp.status == .requiresApproval {
-                loginMessage = "请在系统设置的「登录项」中允许 QuietPin。"
+                loginMessage = "请在系统设置的「登录项」中允许 Aside。"
                 SMAppService.openSystemSettingsLoginItems()
             } else { loginMessage = nil }
         } catch {

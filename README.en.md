@@ -1,16 +1,16 @@
-# QuietPin
+# Aside
 
 [简体中文](README.md) · [English](README.en.md)
 
-A small desktop Inbox for fleeting thoughts. Capture an idea without breaking your flow, then keep only your three most important items in sight.
+Capture it. Stay in flow.
 
-![QuietPin product overview (Chinese)](docs/images/quietpin-cover.png)
+Aside is a lightweight desktop capture tool for thoughts that shouldn't interrupt what you're doing.
 
-When you are juggling AI tools and parallel tasks, a new idea can interrupt the work in front of you. QuietPin opens a quick-capture bar with a global shortcut. Write it down, send it to your Inbox, and return to what you were doing.
+When you are juggling AI tools and parallel tasks, a new idea can interrupt the work in front of you. Aside opens a quick-capture bar with a global shortcut. Write it down, send it to your Inbox, and return to what you were doing.
 
-QuietPin is available for macOS and Windows. Notes stay on your device; no account, cloud sync, or AI service is required.
+Aside is available for macOS and Windows. Notes stay on your device; no account, cloud sync, or AI service is required.
 
-If QuietPin helps you, a ⭐️ on the [GitHub repository](https://github.com/savannahliz/SavannahZ_QuietPin) is appreciated.
+If Aside helps you, a ⭐️ on the [GitHub repository](https://github.com/savannahliz/aside) is appreciated.
 
 ## Features
 
@@ -23,26 +23,28 @@ If QuietPin helps you, a ⭐️ on the [GitHub repository](https://github.com/sa
 
 ## Download and use
 
-Download installers from [Releases](https://github.com/savannahliz/SavannahZ_QuietPin/releases/tag/v1.0.2). The source-code archives are not runnable apps.
+Download installers from [Releases](https://github.com/savannahliz/aside/releases/tag/v1.1.0). The source-code archives are not runnable apps.
 
 | Platform | File | Default capture shortcut |
 | --- | --- | --- |
-| macOS 13+, Apple Silicon / Intel | `QuietPin-1.0.2-macOS-universal.dmg` | Option + Space |
-| Windows 10/11 x64 | `QuietPin-1.0.2-Windows-x64.exe` | Ctrl + Alt + Space |
+| macOS 13+, Apple Silicon / Intel | `Aside-1.1.0-macOS-universal.dmg` | Option + Space |
+| Windows 10/11 x64 | `Aside-1.1.0-Windows-x64.exe` | Ctrl + Alt + Space |
 
-On Mac, open the DMG, drag QuietPin into Applications, and launch it. The app lives in the menu bar, not the Dock. On Windows, run the EXE; no separate .NET installation is needed. The app is available from the system tray.
+On Mac, open the DMG, drag Aside into Applications, and launch it. The app lives in the menu bar, not the Dock. On Windows, run the EXE; no separate .NET installation is needed. The app is available from the system tray.
+
+Upgrading from QuietPin: quit the old app before launching Aside. Existing notes and settings remain in the original data locations. On Mac, `Aside.app` does not replace `QuietPin.app` automatically; after confirming your notes appear in Aside, you may remove the old app, but **do not delete the data directory below**. If launch-on-login was enabled, toggle it off and back on in Aside's settings. On Windows, the executable is now `Aside.exe`; re-enabling launch-on-login also updates the saved EXE path.
 
 Changing a color applies it immediately. To reuse it later, click Save Color in the color panel or settings. Click a saved swatch to restore it, or right-click one to remove it.
 
-### macOS says “QuietPin” Not Opened
+### macOS says “Aside” Not Opened
 
-The current DMG is not signed with an Apple Developer ID or notarized. macOS may show “Apple could not verify ‘QuietPin’ is free of malware,” with **Move to Trash** and **Done** buttons. This is not a malware detection, but it is also not a safety certification. First verify that your installer came from this repository's Releases page. If you cannot verify its source, do not proceed.
+The current DMG is not signed with an Apple Developer ID or notarized. macOS may show “Apple could not verify ‘Aside’ is free of malware,” with **Move to Trash** and **Done** buttons. This is not a malware detection, but it is also not a safety certification. First verify that your installer came from this repository's Releases page. If you cannot verify its source, do not proceed.
 
 If you trust the source, follow [Apple's official instructions](https://support.apple.com/en-us/102445):
 
 1. Click **Done**, not **Move to Trash**.
 2. Open **System Settings → Privacy & Security**, then scroll down to **Security**.
-3. Find the notice for QuietPin and click **Open Anyway**.
+3. Find the notice for Aside and click **Open Anyway**.
 4. Confirm **Open** when prompted and authenticate if required. You should then be able to launch it normally.
 
 Changing “Allow applications downloaded from” to “App Store and identified developers” alone does **not** replace **Open Anyway** for this unsigned release. You do not need to disable Gatekeeper or run a Terminal command. Eliminating this first-launch warning requires a future release signed with Developer ID and notarized by Apple.
@@ -53,6 +55,8 @@ The Windows installer is also not formally code-signed and may display a securit
 
 - macOS: `~/Library/Application Support/QuietPin/inbox.json`; settings are stored in UserDefaults.
 - Windows: `%LOCALAPPDATA%\QuietPin\inbox.json`; notes and settings are stored in the same file.
+
+The `QuietPin` directory names above are retained for compatibility with existing user data. They are not the app's display name.
 
 There is no cross-device sync or Mac/Windows data-format interoperability yet. Quit the app before backing up the data file. On Mac, appearance and window preferences need a separate backup of system preferences.
 
@@ -67,7 +71,7 @@ bash scripts/test-macos.sh
 bash scripts/build-macos.sh
 ```
 
-The build produces `dist/QuietPin.app` and a DMG in `dist/`. The script compiles Apple Silicon and Intel binaries and combines them into a universal app.
+The build produces `dist/Aside.app` and a DMG in `dist/`. The script compiles Apple Silicon and Intel binaries and combines them into a universal app.
 
 ### Windows
 
@@ -88,4 +92,4 @@ Please report reproducible issues through GitHub Issues, including your OS versi
 
 ## License
 
-QuietPin is released under [GNU GPL v3.0](LICENSE) (version 3 only).
+Aside is released under [GNU GPL v3.0](LICENSE) (version 3 only).

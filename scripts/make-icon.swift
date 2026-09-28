@@ -1,7 +1,7 @@
 import AppKit
 import Foundation
 
-let directory = URL(fileURLWithPath: ".build/QuietPin.iconset", isDirectory: true)
+let directory = URL(fileURLWithPath: ".build/Aside.iconset", isDirectory: true)
 try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
 for size in [16, 32, 128, 256, 512] {
     for scale in [1, 2] {

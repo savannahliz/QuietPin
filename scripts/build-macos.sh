@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-mkdir -p .build/arm64 .build/x86_64 dist/QuietPin.app/Contents/MacOS dist/QuietPin.app/Contents/Resources
+mkdir -p .build/arm64 .build/x86_64 dist/Aside.app/Contents/MacOS dist/Aside.app/Contents/Resources
 sdk="${SDKROOT:-$(xcrun --show-sdk-path)}"
 for arch in arm64 x86_64; do
     swiftc -swift-version 5 -O -target "$arch-apple-macosx13.0" -sdk "$sdk" \
@@ -12,17 +12,17 @@ for arch in arm64 x86_64; do
         -I ".build/$arch" -L ".build/$arch" -lQuietPinCore Sources/QuietPin/*.swift \
         -o ".build/$arch/QuietPin"
 done
-lipo -create .build/arm64/QuietPin .build/x86_64/QuietPin -output dist/QuietPin.app/Contents/MacOS/QuietPin
-cp packaging/Info.plist dist/QuietPin.app/Contents/Info.plist
-cp assets/GitHub_Invertocat_Black.png dist/QuietPin.app/Contents/Resources/GitHub_Invertocat_Black.png
-cp assets/GitHub_Invertocat_White.png dist/QuietPin.app/Contents/Resources/GitHub_Invertocat_White.png
+lipo -create .build/arm64/QuietPin .build/x86_64/QuietPin -output dist/Aside.app/Contents/MacOS/Aside
+cp packaging/Info.plist dist/Aside.app/Contents/Info.plist
+cp assets/GitHub_Invertocat_Black.png dist/Aside.app/Contents/Resources/GitHub_Invertocat_Black.png
+cp assets/GitHub_Invertocat_White.png dist/Aside.app/Contents/Resources/GitHub_Invertocat_White.png
 swift scripts/make-icon.swift
-iconutil -c icns .build/QuietPin.iconset -o dist/QuietPin.app/Contents/Resources/QuietPin.icns
-codesign --force --sign - dist/QuietPin.app
-codesign --verify --deep --strict dist/QuietPin.app
-stage="$(mktemp -d "${TMPDIR:-/tmp}/quietpin-dmg.XXXXXX")"
-ditto dist/QuietPin.app "$stage/QuietPin.app"
+iconutil -c icns .build/Aside.iconset -o dist/Aside.app/Contents/Resources/Aside.icns
+codesign --force --sign - dist/Aside.app
+codesign --verify --deep --strict dist/Aside.app
+stage="$(mktemp -d "${TMPDIR:-/tmp}/aside-dmg.XXXXXX")"
+ditto dist/Aside.app "$stage/Aside.app"
 ln -s /Applications "$stage/Applications"
 cp packaging/安装说明.txt "$stage/安装说明.txt"
-hdiutil create -volname QuietPin -srcfolder "$stage" -ov -format UDZO dist/QuietPin-1.0.2-macOS-universal.dmg
-printf 'Built: %s/dist/QuietPin.app\nBuilt: %s/dist/QuietPin-1.0.2-macOS-universal.dmg\n' "$PWD" "$PWD"
+hdiutil create -volname Aside -srcfolder "$stage" -ov -format UDZO dist/Aside-1.1.0-macOS-universal.dmg
+printf 'Built: %s/dist/Aside.app\nBuilt: %s/dist/Aside-1.1.0-macOS-universal.dmg\n' "$PWD" "$PWD"

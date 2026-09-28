@@ -1,48 +1,21 @@
-# QuietPin · GitHub 发布文案
+# Aside · GitHub 发布文案
 
-以下文字可以直接复制到 GitHub 的仓库设置和首个 Release。发布前检查版本号与安装包文件名是否一致。
+## 仓库
 
-## 仓库名称
+- 名称：`aside`
+- 地址：https://github.com/savannahliz/aside
+- Description：`Aside — Capture it. Stay in flow. A lightweight desktop capture tool for thoughts that shouldn't interrupt what you're doing. Local Inbox for macOS and Windows.`
+- Topics：`macos` `windows` `desktop-app` `productivity` `note-taking` `swiftui` `wpf`
 
-`SavannahZ_QuietPin`
+## v1.1.0 · 品牌更名
 
-## Description / About
+QuietPin 正式更名为 **Aside**。产品功能不变：全局快捷键快速捕获想法，保存至本地 Inbox，最多三条 Pin 留在眼前。
 
-`闪念即存，重要的事留在眼前。快捷键随时记录想法，自动收进本地 Inbox；最多置顶三条。支持 macOS 和 Windows。`
+下载：
 
-## Topics
+- macOS 13+（Apple Silicon / Intel）：`Aside-1.1.0-macOS-universal.dmg`
+- Windows 10/11 x64：`Aside-1.1.0-Windows-x64.exe`
 
-`macos` `windows` `desktop-app` `productivity` `note-taking` `swiftui` `wpf`
+为保留旧用户记录和设置，应用继续使用旧版内部数据目录和稳定标识。升级前先退出 QuietPin；Mac 上新的 `Aside.app` 不会自动覆盖旧的 `QuietPin.app`。确认原记录在 Aside 中可见后再自行移除旧应用，不要删除用户数据目录。曾开启登录启动的用户，请在 Aside 设置中关闭再开启一次；Windows 用户移动新 EXE 后尤其需要这一步来更新启动路径。
 
-## 首个 Release
-
-**Tag：** `v1.0.0`
-
-**标题：** `QuietPin v1.0.0 · 首个公开预览版`
-
-**正文：**
-
-> QuietPin 是一款轻量桌面 Inbox。按全局快捷键快速记下一件事，最多将三条重要事项 Pin 在屏幕上；窗口可折叠成细条、贴边隐藏，并可调整颜色和透明度。记录保存在本机，无需账号。
->
-> 为不打断当前任务的心流，中央输入条会快速弹出，记录后自动消失；鼠标移入时才显示取消键。
->
-> ### 下载
->
-> - macOS 13+（Apple Silicon / Intel）：`QuietPin-1.0.0-macOS-universal.dmg`，打开后将应用拖入“应用程序”。
-> - Windows 10/11 x64：`QuietPin-1.0.0-Windows-x64.exe`，双击运行，无需另装 .NET。
->
-> ### 主要功能
->
-> - 自定义全局快捷键快速记录，Enter 或组合键保存，Esc 取消。
-> - 单一 Inbox，最多三条 Pin，支持替换和拖动排序。
-> - 完整列表、三条 Pin、细条和屏幕边缘唤回条。
-> - 透明度、颜色、收藏色与窗口置顶设置。
-> - 已完成事项可恢复，也可批量清空并记住确认偏好。
->
-> ### 当前限制
->
-> 安装包尚未正式代码签名。Windows 版通过交叉编译和数据测试，但尚未完成 Windows 真机界面验证；Intel Mac 也尚未实机验证。首次安装请确认文件来自此仓库的 Release。
->
-> 源码以 GNU GPL v3.0（仅第 3 版）发布。问题与使用反馈请提交 Issue。
-
-将 DMG 和 EXE 作为 Release assets 上传；如希望附带说明，可同时上传 `QuietPin-1.0.0-Windows-x64.zip`。仓库根目录的 `dist/` 已被忽略，安装包不会随源码提交。
+旧版 `v1.0.0`—`v1.0.2` 的 Releases 和二进制文件应保留，作为历史版本；不要把旧版安装包改名为 Aside。当前安装包尚未正式代码签名或公证，首次打开请参考 README 的安全提示。Windows 界面尚未在真机验证。
