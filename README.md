@@ -2,80 +2,79 @@
 
 [简体中文](README.md) · [English](README.en.md)
 
-Capture it. Stay in flow.
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="Aside — Capture it. Stay in flow. 用快捷输入条捕获闪念，将它存入本地 Inbox，同时让当前任务留在眼前">
+</p>
 
-Aside is a lightweight desktop capture tool for thoughts that shouldn't interrupt what you're doing.
+*交互示意，非应用截图。*
 
-并行处理任务时，突然冒出的想法很容易打断当前心流；不记下来，又怕转眼就忘。Aside 让你用快捷键唤出中央输入条，写完即收进 Inbox，再回到手头的事。
+你正在处理一件事，另一个想法却突然冒出来。切走去记录，会打断当前任务；不记，又怕它转瞬即逝。Aside 把记录动作缩短为：**按快捷键 → 写一句 → 回到手头的事。**
 
-Aside 提供 macOS 和 Windows 版本。记录保存在本机，不需要账号，也没有云同步或 AI 功能。
+它是一个轻量桌面 Inbox，不是多窗口便签墙。所有想法进入同一个列表，新记录默认不置顶；只有你选出的最多三条事项会持续留在眼前。记录保存在本机，无需账号、云同步或 AI 服务。
 
-如果 Aside 对你有帮助，欢迎到 [GitHub 项目主页](https://github.com/savannahliz/aside) 点个 ⭐️ 支持作者。
+## 快速上手
 
-## 它能做什么
+1. 从 [v1.1.0 Releases](https://github.com/savannahliz/aside/releases/tag/v1.1.0) 下载适合你系统的安装包。源码压缩包不能直接运行。
+2. 启动 Aside。在任何应用中按快速记录快捷键，屏幕中央会出现输入条。
+3. 输入内容并按 **Enter**：输入条消失，内容进入 Inbox；按 **Esc** 可取消。快捷键和保存键均可在设置中修改。
 
-- **快速记录**：按全局快捷键，屏幕中央弹出输入条；按 Enter 保存到 Inbox，Esc 取消。快捷键和保存键均可在设置中调整。新记录默认不置顶；取消键在鼠标移入输入区域时出现。
-- **三条 Pin**：最多置顶三条事项。第四条需要选择替换对象，原事项仍留在 Inbox。
-- **三种显示状态**：完整 Inbox、只显示 Pin、单行细条。窗口可拖动、缩放、置顶，也能贴到屏幕左右边缘；鼠标离开后收成唤回边条。
-- **外观自定义**：调节背景颜色、收藏常用颜色，并分别设置便签闲置、交互及快速输入时的透明度。
-- **完成事项**：可以恢复已完成事项；“清空”会删除全部已完成事项，首次清空会确认，也可选择以后不再提示。
-- **本地保存**：记录、窗口位置和设置在重启后恢复。
-
-## 下载与使用
-
-安装包发布在仓库的 [Releases 页面](https://github.com/savannahliz/aside/releases/tag/v1.1.0)，源代码压缩包不能直接当作应用运行。
-
-| 平台 | 下载文件 | 默认快速记录快捷键 |
+| 平台 | 下载 | 默认快速记录快捷键 |
 | --- | --- | --- |
-| macOS 13+，Apple Silicon / Intel | `Aside-1.1.0-macOS-universal.dmg` | Option + Space |
-| Windows 10/11 x64 | `Aside-1.1.0-Windows-x64.exe` | Ctrl + Alt + Space |
+| macOS 13+ · Apple Silicon / Intel | [下载 DMG](https://github.com/savannahliz/aside/releases/download/v1.1.0/Aside-1.1.0-macOS-universal.dmg) | Option + Space |
+| Windows 10/11 · x64 | [下载 EXE](https://github.com/savannahliz/aside/releases/download/v1.1.0/Aside-1.1.0-Windows-x64.exe) | Ctrl + Alt + Space |
 
-Mac：打开 DMG，将 Aside 拖进“应用程序”，双击启动。它显示在屏幕顶部菜单栏，不显示在 Dock。Windows：双击 EXE 即可运行，无需另装 .NET；可在系统托盘找到应用。
+Mac：打开 DMG，把 `Aside.app` 拖进“应用程序”；它常驻顶部菜单栏，不显示在 Dock。Windows：双击 `Aside.exe`，无需另装 .NET；应用可从系统托盘找到。
 
-从旧版升级：先退出旧应用，再启动 Aside。为了继续读取既有记录和设置，内部仍沿用旧版的数据目录及稳定标识。Mac 上 `Aside.app` 不会自动覆盖 `QuietPin.app`；确认 Aside 中能看到原记录后，可自行移除旧应用，**不要删除下方的数据目录**。如果曾开启登录启动，请在 Aside 设置中关闭再开启一次；Windows 版改为 `Aside.exe`，重新开启登录启动也会更新保存的 EXE 路径。
+> 安装包目前尚未完成正式代码签名。macOS 首次打开可能被 Gatekeeper 拦截，Windows 也可能显示未知发布者提示。请先核对下载来源；[macOS 的具体操作见下文](#macos-首次打开被拦截)。
 
-选择颜色后会立即应用。若想以后再次使用该颜色，在调色窗口或设置中点击“保存颜色”；点击收藏色块可恢复，右键可删除收藏。
+## 闪念先放一边，重要的事留在眼前
 
-### macOS 首次打开提示“Aside 无法打开”
+- **快速捕获**：中央输入条随叫随到，写完即消失。鼠标移入时才显示取消按钮；新事项默认进入普通 Inbox。
+- **一个 Inbox，最多三条 Pin**：展开时看全部内容，收起时只看 Pin。置顶第四条时可选择替换对象，原事项仍留在 Inbox。
+- **不占满桌面**：完整列表、三条 Pin 和单行细条三种形态；窗口可拖动、缩放、置顶，也可贴到屏幕左右边缘隐藏，靠近边条再唤回。
+- **让界面安静下来**：使用系统调色盘选背景色、保存常用颜色，分别调整便签闲置、交互和快速输入时的透明度。
+- **事后整理**：完成事项可恢复；“清空”仅删除已完成事项，首次会确认，也可选择以后不再提示。
 
-当前 DMG 尚未使用 Apple Developer ID 签名和公证，macOS 可能显示“Apple 无法验证 Aside 是否不含恶意软件”，并提供“移到废纸篓 / 完成”按钮。这并不等于已经检测到恶意软件，也不代表应用已经通过安全检查。请先确认安装包来自本仓库的 Releases；如果无法确认来源，不要继续打开。
+## 首次打开与升级
 
-确认来源可信后，按 [Apple 官方说明](https://support.apple.com/zh-cn/102445) 操作：
+### macOS 首次打开被拦截
 
-1. 在提示框中点“完成”，不要点“移到废纸篓”。
-2. 打开 Mac 的“系统设置”→“隐私与安全性”，向下滚动到“安全性”。
-3. 找到 Aside 的拦截提示，点“仍要打开”（英文系统为 **Open Anyway**）。
-4. 再次确认时点“打开”，按系统要求输入密码或使用 Touch ID。之后可正常双击启动。
+当前 DMG 未使用 Apple Developer ID 签名和公证。若看到“无法验证 Aside 是否不含恶意软件”，这并不表示系统已检测到恶意软件，也不等于应用已经通过安全审查。**只有在确认文件来自本仓库 Release、且你信任来源时**，才按 [Apple 官方说明](https://support.apple.com/zh-cn/102445) 操作：
 
-仅将“允许从以下位置下载的应用”改为“App Store 和已识别的开发者”，**不能替代**上面的“仍要打开”操作，因为当前版本还不是已识别开发者签名并公证的应用。无需关闭 Gatekeeper 或运行终端命令。彻底消除这类首次打开警告，需要未来版本完成 Developer ID 签名与 Apple 公证。
+1. 在提示框点“完成”，不要点“移到废纸篓”。
+2. 打开“系统设置”→“隐私与安全性”，向下滚动到“安全性”。
+3. 找到 Aside 的拦截记录，点“仍要打开”，再次确认“打开”。
 
-Windows 安装包目前也未进行正式代码签名，首次运行时可能显示系统安全提示。
+只将“允许从以下位置下载的应用”改为“App Store 和已识别的开发者”不能代替“仍要打开”。无需关闭 Gatekeeper 或运行终端命令。要从根本上消除首次打开警告，未来版本仍需完成开发者签名和 Apple 公证。
 
-## 本地数据
+### 从 QuietPin 升级
 
-- macOS：`~/Library/Application Support/QuietPin/inbox.json`；设置由系统 UserDefaults 保存。
-- Windows：`%LOCALAPPDATA%\QuietPin\inbox.json`，记录和设置保存在同一文件。
+先退出旧应用，再启动 Aside。为保留记录和设置，内部数据路径与稳定标识没有跟着品牌改名。
 
-上面两个 `QuietPin` 路径是为兼容旧用户数据而保留的内部路径，不是应用显示名称。
+- **Mac**：`Aside.app` 不会自动覆盖 `QuietPin.app`。确认原记录在 Aside 中可见后，可自行移除旧应用；不要删除下方的数据目录。
+- **Windows**：新程序名为 `Aside.exe`。如果曾开启登录启动，在 Aside 设置中关闭再开启一次，以更新保存的 EXE 路径；Mac 用户也建议重新开启登录启动。
 
-目前没有跨设备同步或 Mac/Windows 数据格式互通。备份前先退出应用，再复制对应数据文件；Mac 的外观和窗口设置还需另外备份系统偏好设置。
+## 数据与边界
+
+| 平台 | 本地记录位置 |
+| --- | --- |
+| macOS | `~/Library/Application Support/QuietPin/inbox.json` |
+| Windows | `%LOCALAPPDATA%\QuietPin\inbox.json` |
+
+路径中的 `QuietPin` 为兼容旧用户数据而保留。Mac 外观和窗口设置由系统 UserDefaults 保存；Windows 设置与记录保存在同一文件。备份前请先退出应用，再复制对应文件。当前没有跨设备同步，Mac 与 Windows 的数据文件也不能直接互相覆盖。
+
+macOS 的数据模型、颜色收藏、窗口形态、贴边行为和快速输入有自动测试。Windows 已通过交叉编译与数据模型测试，**尚未在 Windows 真机验证**界面、全局快捷键、多显示器与登录启动；Intel Mac、全屏应用和多个桌面也未逐一实机验证。
 
 ## 从源码构建
 
-### macOS
-
-需要 macOS 13+ 和 Xcode Command Line Tools。项目使用 SwiftUI、AppKit 与 Carbon，无第三方代码依赖。
+macOS 需要 macOS 13+ 与 Xcode Command Line Tools；应用使用 SwiftUI、AppKit 和 Carbon，无第三方代码依赖。
 
 ```sh
 bash scripts/test-macos.sh
 bash scripts/build-macos.sh
 ```
 
-构建完成后，应用位于 `dist/Aside.app`，DMG 位于 `dist/`。脚本分别编译 Apple Silicon 和 Intel 版本，再合并为通用应用。
-
-### Windows
-
-需要 .NET 10 SDK。Windows 版使用 WPF 和 Win32；发布为自带运行库的 x64 EXE。
+产物为 `dist/Aside.app` 和通用版 DMG。Windows 需要 .NET 10 SDK，使用 WPF 和 Win32：
 
 ```powershell
 dotnet run --project windows/Tests/CoreChecks.csproj -c Release
@@ -84,12 +83,8 @@ dotnet publish windows/QuietPin.Windows.csproj -c Release -r win-x64 --self-cont
 
 在 macOS 上也可设置 `DOTNET_BIN` 指向 .NET 10 SDK，然后运行 `bash scripts/build-windows.sh` 交叉编译 Windows 包。
 
-## 当前验证范围
+## 反馈与许可
 
-macOS 的数据模型、颜色收藏、窗口模式、贴边行为和快速输入已有自动测试。Windows 已通过交叉编译与数据模型测试，但尚未在 Windows 真机验证界面、全局快捷键、多显示器和登录启动。Intel Mac、全屏应用与多个桌面的行为也尚未逐一实机验证。
-
-欢迎通过 Issues 反馈复现步骤、系统版本和截图；提交日志或截图前请检查其中是否包含私人记录。
-
-## 许可证
+欢迎通过 [Issues](https://github.com/savannahliz/aside/issues) 提交复现步骤、系统版本和截图；分享日志或截图前，请检查其中是否包含私人记录。如果 Aside 对你有帮助，也欢迎给[仓库点个 ⭐](https://github.com/savannahliz/aside)。
 
 Aside 以 [GNU GPL v3.0](LICENSE) 发布（仅第 3 版）。

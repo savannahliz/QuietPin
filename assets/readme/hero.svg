@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Aside — Capture it. Stay in flow.</title>
+  <desc id="desc">A schematic of Aside: a fleeting thought moves from a quick-capture bar into a local Inbox, while the current task stays pinned.</desc>
+
+  <rect width="1200" height="420" rx="28" fill="#F4F3EE"/>
+  <text x="64" y="60" fill="#617268" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="650" letter-spacing="2">DESKTOP CAPTURE · LOCAL FIRST</text>
+  <text x="59" y="181" fill="#25332D" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="112" font-weight="700" letter-spacing="-6">Aside</text>
+  <text x="64" y="234" fill="#4D6454" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="32" font-weight="600">Capture it. Stay in flow.</text>
+  <text x="64" y="300" fill="#34423A" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="25">One shortcut. One Inbox.</text>
+  <text x="64" y="336" fill="#65736B" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="23">Keep the idea. Keep your place.</text>
+
+  <text x="655" y="59" fill="#728078" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="650" letter-spacing="1.5">QUICK CAPTURE</text>
+  <rect x="648" y="78" width="496" height="76" rx="38" fill="#FFFFFF" stroke="#C8CDC6" stroke-width="1.5"/>
+  <path d="M680 111h18m-14-7v19" stroke="#5D7163" stroke-width="2.6" stroke-linecap="round"/>
+  <text x="721" y="124" fill="#34423A" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="22">Explore this idea later…</text>
+  <text x="1084" y="124" fill="#6B796F" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="24">↵</text>
+
+  <path d="M904 167v29m-7-7 7 8 7-8" fill="none" stroke="#8A9B8D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="688" y="210" width="456" height="171" rx="20" fill="#E8E6DB" stroke="#C9CEC5" stroke-width="1.5"/>
+  <text x="714" y="250" fill="#25332D" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26" font-weight="650">Inbox</text>
+  <text x="1005" y="248" fill="#566B5A" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="19">1 / 3 pinned</text>
+  <path d="M714 266h404" stroke="#C8C9BE" stroke-width="1"/>
+  <circle cx="732" cy="292" r="8" fill="none" stroke="#788F7D" stroke-width="2"/>
+  <text x="754" y="300" fill="#334039" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="21">Finish the current draft</text>
+  <path d="M1103 283v20m-5-18h10" stroke="#637B69" stroke-width="2" stroke-linecap="round"/>
+  <path d="M714 314h404" stroke="#CFD0C5" stroke-width="1"/>
+  <circle cx="732" cy="342" r="8" fill="none" stroke="#9AA69B" stroke-width="2"/>
+  <text x="754" y="350" fill="#526158" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="21">Explore this idea later…</text>
+</svg>
